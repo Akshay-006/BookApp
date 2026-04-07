@@ -3,6 +3,7 @@ package com.springboot.BookManagementApp.controller;
 import com.springboot.BookManagementApp.dto.AuthorSignUpDto;
 import com.springboot.BookManagementApp.model.Author;
 import com.springboot.BookManagementApp.service.AuthorService;
+import com.springboot.BookManagementApp.service.StudentService;
 import com.springboot.BookManagementApp.utility.JwtUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ public class AuthController {
 
     private final JwtUtil jwtUtility;
     private final AuthorService authorService;
+    private final StudentService studentService;
 
     @GetMapping("/login")
     public ResponseEntity<?> login(Principal principal){
@@ -33,6 +35,14 @@ public class AuthController {
     public ResponseEntity<?> authorSignUp(@RequestBody AuthorSignUpDto authorSignUpDto){
 
         authorService.authorSignUp(authorSignUpDto);
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PostMapping("/student/signup")
+    public ResponseEntity<?> studentSignUp(@RequestBody AuthorSignUpDto authorSignUpDto){
+
+        studentService.studentSignUp(authorSignUpDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
