@@ -81,12 +81,12 @@ public class BookService {
     }
 
 
-    public void updateBook(long bookId, String title, int year, String authorName, String existingAuthor) {
+    public void updateBook(long bookId, String title, int year, String authorName) {
         Book book = getBookById(bookId);
 
-        if (!book.getAuthor().getName().equalsIgnoreCase(existingAuthor)){
+        /*if (!book.getAuthor().getName().equalsIgnoreCase(existingAuthor)){
             throw new NoAccessException("U dont have Access to update");
-        }
+        }*/
 
         if (!title.isEmpty()) book.setTitle(title);
         if (year!=-1) book.setPublicationYear(year);
@@ -94,5 +94,10 @@ public class BookService {
 
         bookRepository.save(book);
 
+    }
+
+    public void deleteBook(long bookId) {
+        Book book = getBookById(bookId);
+        bookRepository.delete(book);
     }
 }
