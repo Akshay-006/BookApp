@@ -81,8 +81,7 @@ public class BookServiceTest {
 
         when(bookRepository.findByISBN("AT1234")).thenReturn(book1);
 
-        //Prepare the DTO for above ticket object
-        // So we know that DTO is getting prepared properly in our actual service class too.
+        
 
         BookDto bookDto = new BookDto(
                 book1.getTitle(),
