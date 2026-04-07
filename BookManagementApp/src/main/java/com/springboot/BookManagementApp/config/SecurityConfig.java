@@ -45,9 +45,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET,"/api/book/get-all")
                         .permitAll()
                         .requestMatchers(HttpMethod.PUT,"/api/book/update/{bookId}")
-                        .hasAnyAuthority("AUTHOR","ADMIN")
+                        .hasAnyAuthority("AUTHOR","STUDENT")
                         .requestMatchers(HttpMethod.DELETE,"/api/book/delete/{bookId}")
-                        .hasAuthority("ADMIN")
+                        .hasAuthority("STUDENT")
 
 
                         .anyRequest().permitAll()
